@@ -1,7 +1,7 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++11 -Wall -Wextra
-LDFLAGS := -lgtest -lgtest_main -pthread
+LDFLAGS := -pthread  # doctest does not require linking with additional libraries
 
 # Targets
 MAIN := main
@@ -36,7 +36,7 @@ clean:
 	rm -f $(OBJS) $(DEPS) $(MAIN) $(TEST)
 
 # Phony targets
-.PHONY: all clean
+.PHONY: all clean test
 
 all: $(MAIN) $(TEST)
 
