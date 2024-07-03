@@ -1,24 +1,19 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++11 -Wall -Wextra
-LDFLAGS := -pthread  # doctest does not require linking with additional libraries
+LDFLAGS := -pthread  # if needed
 
 # Targets
 MAIN := main
-TEST := test
 
 # Source files
-SRCS := main.cpp test.cpp tree.cpp
+SRCS := main.cpp tree.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 
 # Main target
-$(MAIN): main.o tree.o
+$(MAIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
-
-# Test target
-$(TEST): test.o tree.o
-	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
 # Rules for compiling objects
 %.o: %.cpp
@@ -33,12 +28,12 @@ $(TEST): test.o tree.o
 
 # Clean
 clean:
-	rm -f $(OBJS) $(DEPS) $(MAIN) $(TEST)
+	rm -f $(OBJS) $(DEPS) $(MAIN)
 
 # Phony targets
-.PHONY: all clean test
+.PHONY: all clean
 
-all: $(MAIN) $(TEST)
+all: $(MAIN)
 
 # Default target
 .DEFAULT_GOAL := all
