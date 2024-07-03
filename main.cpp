@@ -4,10 +4,18 @@
 class Complex {
 public:
     int real, imag;
+    
     Complex(int r, int i) : real(r), imag(i) {}
+
     bool operator==(const Complex& other) const {
         return real == other.real && imag == other.imag;
     }
+
+    bool operator<(const Complex& other) const {
+        // Compare based on magnitude
+        return (real * real + imag * imag) < (other.real * other.real + other.imag * other.imag);
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Complex& c) {
         os << c.real << "+" << c.imag << "i";
         return os;
