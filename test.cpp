@@ -1,5 +1,5 @@
 #include "tree.hpp"
-#include <gtest/gtest.h>
+#include "doctest.h" 
 
 // Define tests for Tree class
 class TreeTests : public ::testing::Test {
