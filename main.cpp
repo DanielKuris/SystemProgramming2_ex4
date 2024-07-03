@@ -12,8 +12,13 @@ public:
     }
 
     bool operator<(const Complex& other) const {
-        // Compare based on magnitude
+        // Compare based on magnitude for min-heap
         return (real * real + imag * imag) < (other.real * other.real + other.imag * other.imag);
+    }
+
+    bool operator>(const Complex& other) const {
+        // Compare based on magnitude for max-heap
+        return (real * real + imag * imag) > (other.real * other.real + other.imag * other.imag);
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Complex& c) {
@@ -66,7 +71,7 @@ int main() {
     }
     std::cout << std::endl;
 
-    // Convert the tree into a binary min heap
+    // Convert the tree into a binary max heap
     tree.myHeap();
     
     // Heapified tree traversal
@@ -104,3 +109,4 @@ int main() {
 
     return 0;
 }
+
