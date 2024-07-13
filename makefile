@@ -1,3 +1,5 @@
+# danielkuris6@gmail.com
+
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++11 -Wall -Wextra
